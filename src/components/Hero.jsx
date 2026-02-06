@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="bg-white py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 relative overflow-hidden"
+      className="bg-white py-4 sm:py-8 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden"
     >
       {/* Cute background decorations */}
       <div className="absolute top-10 right-5 w-20 h-20 bg-burgundy-100 rounded-full opacity-30 blur-2xl animate-pulse" />

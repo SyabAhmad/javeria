@@ -8,7 +8,7 @@ const education = [
   {
     degree: "Bachelor's (English Literature)",
     institution: "University Of Punjab (PU)",
-    location: "Rawalpindi, Pakistan",
+    location: "Lahore, Pakistan",
     year: "2017 – 2022",
   },
 ];

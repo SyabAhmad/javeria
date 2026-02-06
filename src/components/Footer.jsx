@@ -21,7 +21,7 @@ export default function Footer() {
         </p>
         <div className="mt-4 flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 items-center">
           <span className="text-xs sm:text-sm text-ivory-200 flex items-center gap-1">
-            📍 Rawalpindi, Pakistan
+            📍 Lahore, Pakistan
           </span>
           <span className="hidden sm:inline text-xs sm:text-sm text-ivory-200">
             •

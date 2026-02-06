@@ -47,9 +47,7 @@ export default function Contact() {
             <h3 className="font-bold mb-1 sm:mb-2 text-sm sm:text-base text-black">
               Location
             </h3>
-            <p className="text-xs sm:text-sm text-black">
-              Rawalpindi, Pakistan
-            </p>
+            <p className="text-xs sm:text-sm text-black">Lahore, Pakistan</p>
           </div>
         </div>
 
