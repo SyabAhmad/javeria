@@ -1,87 +1,68 @@
-import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isTraining = location.pathname === "/training";
 
-  const navLinks = [
-    { href: "#home", label: "🏠 Home" },
-    { href: "#about", label: "👤 About" },
-    { href: "#skills", label: "💡 Skills" },
-    { href: "#experience", label: "💼 Experience" },
-    { href: "#contact", label: "💬 Contact" },
+  const socialLinks = [
+    {
+      href: "mailto:jiyamoonshine76@gmail.com",
+      label: "Email",
+      svg: (
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      ),
+    },
+    {
+      href: "https://www.linkedin.com/in/javeriawahab",
+      label: "LinkedIn",
+      svg: (
+        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+        </svg>
+      ),
+    },
   ];
 
   return (
-    <header className="bg-forest-700 text-white sticky top-0 z-50 shadow-xl">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-        {/* Logo Section */}
-        <div className="flex items-center gap-3 hover:scale-105 transition-transform duration-300">
+    <header className="bg-forest-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
+      <div className="max-w-6xl mx-auto px-5 md:px-8 h-16 flex justify-between items-center">
+        <Link to="/" className="flex items-center gap-3 group">
           <img
             src="/jw.png"
-            alt="Javeria Wahab Logo"
-            className="w-10 h-10 rounded-full flex-shrink-0 shadow-lg hover:shadow-xl transition-shadow duration-300 float object-cover"
+            alt="Javeria Wahab"
+            className="w-9 h-9 rounded-full object-cover ring-2 ring-white/20 group-hover:ring-white/40 transition-all duration-200"
           />
-          <h1 className="font-bold text-lg sm:text-xl hidden sm:block truncate hover:text-burgundy-200 transition-colors duration-300">
+          <span className="font-bold text-lg text-white tracking-tight">
             Javeria Wahab
-          </h1>
-        </div>
+          </span>
+        </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-6 items-center">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="hover:text-burgundy-200 transition-all duration-300 font-medium text-sm whitespace-nowrap hover:scale-110 hover:-translate-y-1"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 hover:bg-forest-600 rounded-lg transition-all duration-300 hover:scale-110 active:scale-95"
-          aria-label="Toggle mobile menu"
-        >
-          <svg
-            className="w-6 h-6 transition-transform duration-300"
-            style={{
-              transform: mobileMenuOpen ? "rotate(90deg)" : "rotate(0)",
-            }}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex items-center gap-2">
+          <Link
+            to={isTraining ? "/" : "/training"}
+            className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
+            {isTraining ? "Portfolio" : "Training"}
+          </Link>
 
-      {/* Mobile Navigation Menu */}
-      {mobileMenuOpen && (
-        <nav className="md:hidden bg-forest-800 border-t-2 border-burgundy-700 animate-in fade-in slide-in-from-top-2">
-          <div className="flex flex-col gap-2 px-4 py-4">
-            {navLinks.map((link, index) => (
+          <nav className="flex items-center gap-1 ml-2 pl-2 border-l border-white/10">
+            {socialLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.label}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 hover:bg-forest-700 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:-translate-x-1 hover:shadow-lg"
-                style={{ animationDelay: `${index * 50}ms` }}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
+                aria-label={link.label}
               >
-                {link.label}
+                {link.svg}
               </a>
             ))}
-          </div>
-        </nav>
-      )}
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }

@@ -9,21 +9,29 @@
 }
 
 body {
-  background: linear-gradient(135deg, #fffef9 0%, #f0f4e8 50%, #fffef9 100%);
+  background: linear-gradient(135deg, #fffef9 0%, #f5f5f5 50%, #fffef9 100%);
   background-attachment: fixed;
   font-family: "Inter", sans-serif;
-  color: #2d5016;
-  line-height: 1.6;
+  color: #1a1a1a;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+::selection {
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -31,99 +39,76 @@ html {
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes pulse-glow {
-  0%,
-  100% {
-    box-shadow: 0 0 20px rgba(45, 80, 22, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(139, 58, 58, 0.15);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes slide-in-right {
+@keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
 @layer components {
-  .fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out both;
   }
 
-  .float {
-    animation: float 3s ease-in-out infinite;
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out both;
   }
 
-  .pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out both;
   }
 
-  .hover-lift {
-    @apply transition-all duration-300 ease-out hover:shadow-2xl hover:scale-105;
-  }
-
-  .cute-button {
-    @apply relative overflow-hidden bg-forest-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:bg-forest-900 active:scale-95 hover:shadow-xl hover:-translate-y-1;
-  }
-
-  .cute-card {
-    @apply bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:scale-102 hover:-translate-y-1;
-  }
-}
-
-@layer components {
   .section {
-    @apply py-16 px-4 md:px-8 max-w-6xl mx-auto;
+    @apply px-5 md:px-8 md:min-h-screen md:flex md:items-center;
+  }
+
+  .section-inner {
+    @apply max-w-6xl mx-auto w-full py-16 md:py-20;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-forest-700 mb-8 pb-4 border-b-2 border-burgundy-700;
+    @apply text-3xl md:text-4xl font-bold text-forest-700 mb-10 tracking-tight;
   }
 
-  .card {
-    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+  .section-title::after {
+    content: "";
+    @apply block w-12 h-1 bg-burgundy-700 mt-3 rounded-full;
   }
 
   .btn-primary {
-    @apply bg-forest-700 text-white px-6 py-3 rounded-lg hover:bg-forest-900 transition-colors duration-300;
+    @apply bg-forest-700 text-white px-7 py-3 rounded-lg font-semibold
+      transition-all duration-200
+      active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2;
+  }
+  .btn-primary:hover {
+    background-color: #000000;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
   }
 
-  .skill-tag {
-    @apply bg-forest-50 text-forest-700 px-4 py-2 rounded-full text-sm border border-forest-500;
+  .btn-outline {
+    @apply border-2 border-forest-700 text-forest-700 px-7 py-3 rounded-lg font-semibold
+      transition-all duration-200
+      active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-forest-500 focus:ring-offset-2;
+  }
+  .btn-outline:hover {
+    background-color: #f7f7f7;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
   }
 
-  .experience-item {
-    @apply border-l-4 border-burgundy-700 pl-6 pb-8 relative;
+  .card {
+    @apply bg-white rounded-xl shadow-card p-6 transition-all duration-200;
   }
-
-  .experience-item::before {
-    content: "";
-    @apply absolute -left-3 top-0 w-5 h-5 bg-burgundy-700 rounded-full;
+  .card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
   }
 }

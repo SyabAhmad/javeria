@@ -1,46 +1,111 @@
 export default function Hero() {
-  return (
-    <section
-      id="home"
-      className="bg-white py-4 sm:py-8 md:py-16 px-4 sm:px-6 md:px-8 relative overflow-hidden"
-    >
-      {/* Cute background decorations */}
-      <div className="absolute top-10 right-5 w-20 h-20 bg-burgundy-100 rounded-full opacity-30 blur-2xl animate-pulse" />
-      <div className="absolute bottom-20 left-5 w-32 h-32 bg-forest-100 rounded-full opacity-20 blur-3xl animate-pulse" />
+  const stats = [
+    { value: "3+", label: "Years Teaching" },
+    { value: "365+", label: "Connections" },
+    { value: "Vice Principal", label: "Current Role" },
+    { value: "M.Phil", label: "Highest Degree" },
+  ];
 
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="mb-6 sm:mb-8 fade-in-up">
-          <img
-            src="/jw.png"
-            alt="Javeria Wahab"
-            className="w-24 h-24 sm:w-32 sm:h-32 mx-auto mb-4 sm:mb-6 rounded-full shadow-2xl flex-shrink-0 float pulse-glow object-cover border-4 border-white"
-          />
-        </div>
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-forest-700 mb-3 sm:mb-4 leading-tight fade-in-up">
-          Javeria Wahab
-        </h1>
-        <p className="text-base sm:text-lg md:text-2xl text-burgundy-700 mb-4 sm:mb-6 font-semibold fade-in-up flex items-center justify-center gap-2">
-          <span>📚</span> English Literature Educator <span>✨</span>
-        </p>
-        <p className="text-sm sm:text-base md:text-lg text-forest-900 max-w-3xl mx-auto mb-6 sm:mb-8 leading-relaxed px-2 fade-in-up">
-          Motivated professional with strong expertise in academic writing,
-          critical thinking, and effective communication. Passionate about
-          teaching, research, and fostering intellectual growth in students
-          while contributing to educational excellence.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-2 fade-in-up">
-          <a
-            href="#contact"
-            className="cute-button w-full sm:w-auto text-center py-3 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium min-h-12 sm:min-h-auto flex items-center justify-center"
-          >
-            💬 Get in Touch
-          </a>
-          <a
-            href="mailto:jiyamoonshine76@gmail.com"
-            className="bg-white text-forest-700 border-2 border-forest-700 rounded-lg hover:bg-forest-50 hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-1 inline-block w-full sm:w-auto text-center py-3 sm:py-3 px-4 sm:px-6 text-sm sm:text-base font-medium min-h-12 sm:min-h-auto flex items-center justify-center active:scale-95"
-          >
-            ✉️ Email Me
-          </a>
+  return (
+    <section id="home" className="relative overflow-hidden md:min-h-screen md:flex md:items-center">
+      {/* Premium dark green gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-forest-900 via-forest-800 to-forest-700" />
+
+      {/* Decorative overlay pattern */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px),
+            radial-gradient(circle at 75% 75%, #ffffff 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* Glowing orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-white/5 rounded-full blur-3xl" />
+
+      <div className="relative max-w-6xl mx-auto px-5 md:px-8 py-20 sm:py-24 md:py-36">
+        <div className="grid md:grid-cols-5 gap-12 md:gap-16 items-center">
+
+          {/* Left content */}
+          <div className="md:col-span-3 text-center md:text-left">
+
+            {/* Role badge */}
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full px-4 py-1.5 mb-6 animate-fade-in-up">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span className="text-white/70 text-xs sm:text-sm font-medium tracking-wide">
+                Vice Principal at Darearqam
+              </span>
+            </div>
+
+            {/* Name */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white mb-4 leading-[1.1] animate-fade-in-up font-script font-normal"
+              style={{ animationDelay: "100ms" }}>
+              Javeria Wahab
+            </h1>
+
+            {/* Title */}
+            <p className="text-lg sm:text-xl md:text-2xl text-white/70 font-medium mb-6 leading-relaxed animate-fade-in-up font-display italic"
+              style={{ animationDelay: "200ms" }}>
+              English Literature &amp; Language Specialist &middot; Educational Strategy &amp; Faculty Development
+            </p>
+
+            {/* Key expertise tags */}
+            <div className="flex flex-wrap gap-2 mb-8 justify-center md:justify-start animate-fade-in-up"
+              style={{ animationDelay: "300ms" }}>
+              {["Academic Writing", "Curriculum Design", "Team Leadership", "Research", "Career Mentorship"].map((tag) => (
+                <span key={tag}
+                  className="text-xs sm:text-sm text-white/50 bg-white/5 border border-white/10 rounded-full px-3.5 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center md:justify-start animate-fade-in-up"
+              style={{ animationDelay: "400ms" }}>
+              <a href="#contact"
+                className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-forest-900 font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-amber-500/20 active:scale-[0.98]">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                Let&apos;s Connect
+              </a>
+              <a href="mailto:jiyamoonshine76@gmail.com"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-medium px-8 py-3.5 rounded-xl transition-all duration-200 active:scale-[0.98]">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Email Me
+              </a>
+            </div>
+          </div>
+
+          {/* Right - Photo + Stats */}
+          <div className="md:col-span-2 flex flex-col items-center animate-fade-in-up"
+            style={{ animationDelay: "200ms" }}>
+            <div className="relative mb-6">
+              {/* Glow behind photo */}
+              <div className="absolute inset-0 bg-amber-400/20 rounded-full blur-3xl scale-150" />
+              <img
+                src="/jw.png"
+                alt="Javeria Wahab"
+                className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full object-cover ring-4 ring-white/20 shadow-2xl"
+              />
+            </div>
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+              {stats.map((stat) => (
+                <div key={stat.label}
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-3.5 text-center border border-white/5">
+                  <p className="text-white font-bold text-lg sm:text-xl">{stat.value}</p>
+                  <p className="text-white/50 text-xs">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

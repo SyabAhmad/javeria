@@ -1,41 +1,74 @@
-const skills = [
-  "Technical & Academic Writing",
-  "Business & Proposal Writing",
-  "Research & Analysis",
-  "Critical Thinking",
-  "Effective Communication",
-  "Public Speaking",
-  "Mentorship & Guidance",
-  "Team Leadership",
-  "MS Word",
-  "Excel",
-  "PowerPoint",
-  "Curriculum Design",
-  "Content Editing & Proofreading",
-  "Life Coaching",
+const skillCategories = [
+  {
+    category: "Writing & Research",
+    skills: [
+      "Technical & Academic Writing",
+      "Business & Proposal Writing",
+      "Research & Analysis",
+      "Content Editing & Proofreading",
+      "Copywriting",
+    ],
+  },
+  {
+    category: "Leadership & Management",
+    skills: [
+      "Executive Management",
+      "Team Leadership",
+      "Supervisory Skills",
+      "Office Administration",
+      "Administrative Assistance",
+      "Problem Solving",
+    ],
+  },
+  {
+    category: "Communication & Mentorship",
+    skills: [
+      "Effective Communication",
+      "Public Speaking",
+      "Career Development Coaching",
+      "Mentorship & Guidance",
+      "Critical Thinking",
+      "Life Coaching",
+    ],
+  },
+  {
+    category: "Technical Proficiency",
+    skills: [
+      "MS Word",
+      "Excel",
+      "PowerPoint",
+      "Curriculum Design",
+      "Negotiation",
+      "Team Building",
+    ],
+  },
 ];
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-6xl mx-auto relative"
-    >
-      <div className="absolute -top-20 right-0 w-40 h-40 bg-burgundy-100 rounded-full opacity-20 blur-3xl" />
-
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-forest-700 mb-6 sm:mb-8 pb-4 border-b-2 border-burgundy-700 flex items-center gap-2">
-        <span>💡</span> Skills & Expertise
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 relative z-10">
-        {skills.map((skill, index) => (
-          <div
-            key={index}
-            className="bg-forest-50 text-forest-700 px-3 sm:px-4 py-3 sm:py-3 rounded-2xl text-xs sm:text-sm border-2 border-forest-200 text-center hover:border-burgundy-500 hover:shadow-lg hover:scale-105 hover:bg-forest-100 transition-all duration-300 font-medium cursor-pointer"
-            style={{ animationDelay: `${index * 50}ms` }}
-          >
-            ✓ {skill}
+    <section id="skills" className="section">
+      <div className="section-inner">
+        <h2 className="section-title font-display italic">Skills & Expertise</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {skillCategories.map((cat) => (
+          <div key={cat.category} className="card">
+            <h3 className="text-sm font-semibold text-burgundy-700 uppercase tracking-wider mb-4">
+              {cat.category}
+            </h3>
+            <ul className="space-y-2.5">
+              {cat.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="flex items-center gap-2.5 text-sm text-forest-800/80"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-forest-500 flex-shrink-0" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
