@@ -62,39 +62,51 @@ export default function Experience() {
     <section id="experience" className="section">
       <div className="section-inner">
         <h2 className="section-title font-display italic">Professional Experience</h2>
-      <div className="relative ml-3 md:ml-5">
-        <div className="absolute left-0 top-2 bottom-2 w-px bg-burgundy-200" />
 
-        <div className="space-y-8">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative pl-8 md:pl-10 group">
-              <div className="absolute left-0 top-2 w-2.5 h-2.5 -translate-x-[calc(50%-0.5px)] rounded-full bg-burgundy-700 ring-4 ring-white group-hover:ring-burgundy-50 transition-all duration-200" />
+        <div className="relative">
+          {/* Central line */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-forest-200 md:-translate-x-px" />
 
-              <div className="bg-forest-50/40 rounded-xl p-5 sm:p-6 border border-forest-100/60 hover:border-forest-200 transition-all duration-200">
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-forest-700">
-                      {exp.title}
-                    </h3>
-                    <p className="text-burgundy-700 font-medium text-sm sm:text-base">
-                      {exp.company}
-                    </p>
-                    <p className="text-xs sm:text-sm text-forest-600/70 mt-0.5">
-                      {exp.location}
-                    </p>
+          <div className="space-y-10 md:space-y-16">
+            {experiences.map((exp, index) => {
+              const isEven = index % 2 === 0;
+              return (
+                <div key={index} className={`relative flex flex-col md:flex-row items-start ${
+                  isEven ? "md:flex-row" : "md:flex-row-reverse"
+                }`}>
+
+                  {/* Dot on central line */}
+                  <div className="absolute left-4 md:left-1/2 w-4 h-4 -translate-x-1/2 rounded-full bg-forest-700 ring-4 ring-white z-10 mt-6" />
+
+                  {/* Card */}
+                  <div className={`w-full md:w-[calc(50%-2rem)] pl-12 md:pl-0 ${isEven ? "md:pr-12" : "md:pl-12"}`}>
+                    <div className="bg-white rounded-xl shadow-card border border-forest-100 p-5 sm:p-6 hover:shadow-card-hover hover:border-forest-200 transition-all duration-200">
+                      <span className="inline-block bg-forest-700 text-white px-3 py-1 rounded-md text-xs font-semibold mb-3">
+                        {exp.year}
+                      </span>
+
+                      <h3 className="text-lg sm:text-xl font-bold text-forest-800 leading-tight">
+                        {exp.title}
+                      </h3>
+                      <p className="text-burgundy-700 font-semibold text-sm sm:text-base">
+                        {exp.company}
+                      </p>
+                      <p className="text-xs sm:text-sm text-forest-500/70 mb-3">
+                        {exp.location}
+                      </p>
+                      <p className="text-sm sm:text-base text-forest-700/80 leading-relaxed">
+                        {exp.description}
+                      </p>
+                    </div>
                   </div>
-                  <span className="inline-block bg-forest-700 text-white px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap self-start sm:mt-1">
-                    {exp.year}
-                  </span>
+
+                  {/* Spacer for the other side */}
+                  <div className="hidden md:block w-[calc(50%-2rem)]" />
                 </div>
-                <p className="text-sm sm:text-base text-forest-800/80 leading-relaxed">
-                  {exp.description}
-                </p>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
-      </div>
       </div>
     </section>
   );
