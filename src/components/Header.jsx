@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function Header() {
   const location = useLocation();
   const isTraining = location.pathname === "/training";
+  const isResults = location.pathname === "/results";
 
   const socialLinks = [
     {
@@ -54,6 +55,16 @@ export default function Header() {
             className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
           >
             {isTraining ? "Portfolio" : "Training"}
+          </Link>
+          <Link
+            to="/results"
+            className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+              isResults
+                ? "text-white bg-white/10"
+                : "text-white/70 hover:text-white hover:bg-white/5"
+            }`}
+          >
+            Results
           </Link>
 
           <nav className="flex items-center gap-1 ml-2 pl-2 border-l border-white/10">

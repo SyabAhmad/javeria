@@ -162,7 +162,8 @@ export default function TrainingPage() {
     <div>
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-900 via-forest-800 to-forest-700" />
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/80 via-forest-800/70 to-forest-700/60" />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px),
