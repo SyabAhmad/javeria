@@ -85,6 +85,11 @@ html {
     @apply block w-12 h-1 bg-burgundy-700 mt-3 rounded-full;
   }
 
+  .section-title.text-center::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .btn-primary {
     @apply bg-forest-700 text-white px-7 py-3 rounded-lg font-semibold
       transition-all duration-200

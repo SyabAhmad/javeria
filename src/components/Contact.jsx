@@ -1,3 +1,5 @@
+import { EMAIL } from "../data/constants";
+
 export default function Contact() {
   return (
     <section id="contact" className="py-20 px-5 md:px-8 bg-forest-700 text-white relative overflow-hidden md:min-h-screen md:flex md:items-center">
@@ -18,7 +20,7 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 mb-10">
           <a
-            href="mailto:jiyamoonshine76@gmail.com"
+            href={`mailto:${EMAIL}`}
             className="bg-white/10 backdrop-blur-sm rounded-xl p-5 sm:p-6 hover:bg-white/20 transition-all duration-200 border border-white/10 hover:border-white/20"
           >
             <div className="w-11 h-11 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-3">
@@ -28,7 +30,7 @@ export default function Contact() {
             </div>
             <h3 className="font-semibold text-sm mb-1">Email</h3>
             <p className="text-xs text-white/60 break-all">
-              jiyamoonshine76@gmail.com
+              {EMAIL}
             </p>
           </a>
 

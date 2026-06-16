@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { EMAIL, GOOGLE_FORM_URL } from "../data/constants";
 
 const plans = [
   {
@@ -111,8 +112,6 @@ const faqs = [
   },
 ];
 
-const GOOGLE_FORM_URL = "https://forms.google.com/your-form-id";
-
 const planKeys = ["quickstart", "standard", "mastery", "custom"];
 
 const execution = [
@@ -162,8 +161,8 @@ export default function TrainingPage() {
     <div>
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/80 via-forest-800/70 to-forest-700/60" />
+        <img src="/training-hero.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/70 via-forest-800/60 to-forest-700/50" />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px),
@@ -464,7 +463,7 @@ export default function TrainingPage() {
           <p className="text-sm text-forest-500/70 mb-4">
             Still have questions? Reach out and we'll be happy to help.
           </p>
-          <a href="mailto:jiyamoonshine76@gmail.com"
+          <a href={`mailto:${EMAIL}`}
             className="inline-flex items-center gap-2 bg-forest-700 hover:bg-forest-800 text-white px-7 py-3 rounded-lg font-semibold transition-all duration-200 hover:shadow-lg active:scale-[0.98]">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

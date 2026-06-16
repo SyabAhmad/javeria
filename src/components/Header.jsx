@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { EMAIL } from "../data/constants";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isTraining = location.pathname === "/training";
   const isResults = location.pathname === "/results";
 
   const socialLinks = [
     {
-      href: "mailto:jiyamoonshine76@gmail.com",
+      href: `mailto:${EMAIL}`,
       label: "Email",
       svg: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,10 +38,16 @@ export default function Header() {
     },
   ];
 
+  const navLinks = [
+    { to: "/", label: "Portfolio" },
+    { to: "/training", label: "Training" },
+    { to: "/results", label: "Results" },
+  ];
+
   return (
     <header className="bg-forest-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-white/5">
       <div className="max-w-6xl mx-auto px-5 md:px-8 h-16 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group" onClick={() => setMenuOpen(false)}>
           <img
             src="/jw.png"
             alt="Javeria Wahab"
@@ -49,7 +58,8 @@ export default function Header() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-2">
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-2">
           <Link
             to={isTraining ? "/" : "/training"}
             className="px-4 py-2 text-sm font-medium text-white/70 hover:text-white rounded-lg hover:bg-white/5 transition-all duration-200"
@@ -82,7 +92,47 @@ export default function Header() {
             ))}
           </nav>
         </div>
+
+        {/* Mobile hamburger */}
+        <button onClick={() => setMenuOpen((prev) => !prev)} className="md:hidden p-2 text-white/70 hover:text-white transition-colors duration-200" aria-label="Toggle menu">
+          {menuOpen ? (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-forest-900/95 backdrop-blur-md border-t border-white/5 animate-slide-down">
+          <div className="max-w-6xl mx-auto px-5 py-4 space-y-3">
+            {navLinks.map((link) => (
+              <Link key={link.to} to={link.to} onClick={() => setMenuOpen(false)}
+                className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  location.pathname === link.to
+                    ? "text-white bg-white/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}>
+                {link.label}
+              </Link>
+            ))}
+            <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+              {socialLinks.map((link) => (
+                <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer"
+                  className="p-2.5 text-white/60 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
+                  aria-label={link.label}>
+                  {link.svg}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

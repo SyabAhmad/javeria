@@ -18,8 +18,8 @@ export default function ResultsPage() {
     <div>
       {/* ===== HERO ===== */}
       <section className="relative overflow-hidden min-h-[60vh] flex items-center">
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c7f1?w=1200&q=80" alt="" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/80 via-forest-800/70 to-forest-700/60" />
+        <img src="/results-hero.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-900/70 via-forest-800/60 to-forest-700/50" />
         <div className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `radial-gradient(circle at 25% 25%, #ffffff 1px, transparent 1px),

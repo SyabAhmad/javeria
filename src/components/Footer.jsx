@@ -1,3 +1,5 @@
+import { EMAIL } from "../data/constants";
+
 export default function Footer() {
   return (
     <footer className="bg-forest-900 text-white py-10 px-5 md:px-8">
@@ -21,10 +23,10 @@ export default function Footer() {
           <span>Rawalpindi, Pakistan</span>
           <span className="hidden sm:inline">&middot;</span>
           <a
-            href="mailto:jiyamoonshine76@gmail.com"
+            href={`mailto:${EMAIL}`}
             className="text-burgundy-300/80 hover:text-burgundy-200 transition-colors duration-200 break-all"
           >
-            jiyamoonshine76@gmail.com
+            {EMAIL}
           </a>
         </div>
 
